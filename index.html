@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #wrapper {
+        background-image: repeating-linear-gradient(
+          0,
+          transparent,
+          transparent 1rem,
+          #000 12px,
+          #000 24px
+        );
+        background-size: 200% 200%;
+        animation: barberpole 0.5s linear infinite;
+        width: 20rem;
+        height: 20rem;
+      }
+
+      @keyframes barberpole {
+        100% {
+          background-position: 100% 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper"></div>
+    <script>
+      let time = 10000;
+      const animationDirection = ["reverse", "unset"];
+      const bgRotation = ["0", "90"];
+      const wrapper = document.getElementById("wrapper");
+      setInterval(() => {
+        wrapper.style.backgroundImage = `repeating-linear-gradient(
+                  ${bgRotation[Math.floor(Math.random() * 3)]}deg,
+                  transparent,
+                  transparent 1rem,
+                  #000 12px,
+                  #000 24px
+                )`;
+        wrapper.style.animationDirection =
+          animationDirection[Math.floor(Math.random() * 2)];
+      }, time);
+    </script>
+  </body>
+</html>
